@@ -21,8 +21,8 @@ environment {
        stage('run'){
                  steps {
                      sh 'python --version'
-                   sh 'whoami'
-                   sh 'sudo docker build -t httpd .'
+                   sh 'docker run hello-world'
+                   //sh 'sudo docker build -t httpd .'
                    
                  }
              }
