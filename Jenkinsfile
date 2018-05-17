@@ -1,45 +1,43 @@
-
-pipeline {
-environment {
-     name = 'httpd'
-    
+//so jenkins now will go to git, get code, tar and upload , then get it it again from repo, make docker?
+pipeline{
+     
+     environment {
+          name = 'httpd'
+           }
+     agent any
+     
+     stages {
+          
+          stage('get code from git') {
+               
+               steps{
+                    echo 'getting code...'
+                    checkout scm
+               }
+          }
+          
+          stage('tar and upload to nexus') {
+               
+               steps{
+                    echo 'condensing to tar...'
+                    sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
+                    echo 'uploading to nexus...'
+                    sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/httpd/' 
+               }
+          }
+          
+          stage('get tar from nexus and extract') {
+               
+               steps{
+                    echo 'retrieving file from nexus...'
+               }
+          }
+          
+          stage('build and run docker') {
+               
+               steps{
+                    echo 'building docker...'
+               }
+          }
      }
-
-    agent any
-    stages {
-        stage('build') {
-            steps {
-                 echo 'building...'
-                 checkout scm
-                 script{
-                       app = docker.build("httpd")
-                       app.inside{
-                         sh 'echo "I am inside docker!"'
-                                                  }
-                      docker.withRegistry('http://avatar.securegion.com:18081/' , 'nexus'){
-                      app.push("latest")
-                     }
-                      
-                 }
-                
-                // sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
-            }
-        }
-         stage('upload to nexus registry') {
-            steps {
-              echo 'uploading to nexus registry...'
-              //sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/git-products/'                   
-                
-            }
-        }
-       stage('run'){
-                 steps {
-                     sh 'python --version'
-                     //sh 'docker run hello-world'
-                     //sh 'docker build -t httpd .'
-                     //sh 'docker run -d -p 7000:7000 httpd'
-                   
-                 }
-             }
-         }
-     }
+}
