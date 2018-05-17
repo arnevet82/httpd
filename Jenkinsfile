@@ -22,8 +22,8 @@ environment {
                  steps {
                      sh 'python --version'
                    echo 'running...'
-                    sh 'chmod +x /run.sh'
-                      sh 'run.sh'
+                    sh 'chmod +x src/run.sh'
+                      sh 'src/run.sh'
                  }
              }
          }
