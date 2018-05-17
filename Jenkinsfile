@@ -44,7 +44,10 @@ pipeline{
                     echo 'building docker...'
                     sh 'cd var/lib/jenkins/workspace/httpd/'
                     sh 'ls'
-                    
+                    script{
+                         sh 'docker build -t httpd .'
+                         sh 'docker run -d -p 7000:7000 httpd'
+                    }
                }
           }
      }
