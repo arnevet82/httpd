@@ -2,7 +2,7 @@
 pipeline {
 environment {
      name = 'httpd'
-     app = docker.build("httpd")
+    
      }
 
     agent any
@@ -11,9 +11,14 @@ environment {
             steps {
                  echo 'building...'
                  checkout scm
-                 app.inside{
+                 script{
+                       app = docker.build("httpd")
+                       app.inside{
                       sh 'echo "I am inside docker!"'
                  }
+                      
+                 }
+                
                 // sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
             }
         }
