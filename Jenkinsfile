@@ -30,7 +30,7 @@ pipeline{
                
                steps{
                     echo 'retrieving file from nexus...'
-                    sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/git-products/ -O'
+                    sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
                }
           }
           
