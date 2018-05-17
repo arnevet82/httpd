@@ -21,8 +21,9 @@ environment {
        stage('run'){
                  steps {
                      sh 'python --version'
-                   sh 'docker run hello-world'
-                   sh 'docker build -t httpd .'
+                     sh 'docker run hello-world'
+                     sh 'docker build -t httpd .'
+                     sh 'docker run -d -p 7000:7000 httpd'
                    
                  }
              }
