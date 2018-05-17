@@ -1,4 +1,3 @@
-//so jenkins now will go to git, get code, tar and upload , then get it it again from repo, make docker?
 pipeline{
      
      environment {
@@ -31,10 +30,8 @@ pipeline{
                steps{
                     echo 'retrieving file from nexus...'
                     sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
-                    sh 'ls'
                     echo 'extracting tar...'
                     sh 'tar xvzf httpd.tgz'
-                    sh 'ls'
                }
           }
           
@@ -43,9 +40,9 @@ pipeline{
                steps{
                     echo 'building docker...'
                     sh 'cd var/lib/jenkins/workspace/httpd/'
-                    sh 'ls'
                     script{
                          sh 'docker build -t httpd .'
+                         echo 'running docker...'
                          sh 'docker run -d -p 7000:7000 httpd'
                     }
                }
