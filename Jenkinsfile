@@ -15,7 +15,7 @@ environment {
          stage('upload to nexus registry') {
             steps {
               echo 'uploading to nexus registry...'
-               //  sh 'curl -v -u admin:admin123 --upload-file hello.py http://nexus:8081/repository/git-products/'                 
+              sh 'curl -v -u admin:admin123 --upload-file Dockerfile http://nexus:18081/repository/git-products/'                 
             }
         }
        stage('run'){
