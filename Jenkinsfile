@@ -40,10 +40,10 @@ pipeline{
                steps{
                     echo 'building docker...'
                    // sh 'cd var/lib/jenkins/workspace/httpd/'
-                    script{
+                  //  script{
                        //  sh 'docker build -t httpd .'
                         // sh 'docker run -d -p 7000:7000 httpd'
-                    }
+                 //   }
                }
           }
      }
