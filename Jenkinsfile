@@ -32,6 +32,7 @@ pipeline{
                     echo 'retrieving file from nexus...'
                     sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
                     sh 'ls'
+                    echo 'extracting tar...'
                     sh 'tar xvzf httpd.tgz'
                     sh 'ls'
                }
@@ -41,6 +42,9 @@ pipeline{
                
                steps{
                     echo 'building docker...'
+                    sh 'cd var/lib/jenkins/workspace/httpd/'
+                    sh 'ls'
+                    
                }
           }
      }
