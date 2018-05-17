@@ -10,6 +10,7 @@ environment {
             steps {
                  echo 'building...'
                  checkout scm
+                 sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/ httpd'
             }
         }
          stage('upload to nexus registry') {
@@ -22,8 +23,8 @@ environment {
                  steps {
                      sh 'python --version'
                      sh 'docker run hello-world'
-                     sh 'docker build -t httpd .'
-                     sh 'docker run -d -p 7000:7000 httpd'
+                     //sh 'docker build -t httpd .'
+                     //sh 'docker run -d -p 7000:7000 httpd'
                    
                  }
              }
