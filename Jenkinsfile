@@ -10,7 +10,7 @@ environment {
             steps {
                  echo 'building...'
                  checkout scm
-                 sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/ httpd'
+                 sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
             }
         }
          stage('upload to nexus registry') {
