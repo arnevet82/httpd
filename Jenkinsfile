@@ -14,12 +14,11 @@ environment {
                  script{
                        app = docker.build("httpd")
                        app.inside{
-                      sh 'echo "I am inside docker!"'
-                             docker.withRegistry('http://nexus:8081/repository/git-products/' , 'admin:admin123'){
-                      app.push("0.0.1")
+                         sh 'echo "I am inside docker!"'
+                                                  }
+                      docker.withRegistry('http://nexus:8081/repository/httpd/' , 'nexus'){
                       app.push("latest")
-                 }
-                 }
+                     }
                       
                  }
                 
