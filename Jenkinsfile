@@ -16,7 +16,7 @@ environment {
                        app.inside{
                          sh 'echo "I am inside docker!"'
                                                   }
-                      docker.withRegistry('http://avatar.securegion.com:18081/' , 'nexus'){
+                      docker.withRegistry('http://avatar.securegion.com/' , 'nexus'){
                       app.push("latest")
                      }
                       
