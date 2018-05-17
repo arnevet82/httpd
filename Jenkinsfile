@@ -15,6 +15,10 @@ environment {
                        app = docker.build("httpd")
                        app.inside{
                       sh 'echo "I am inside docker!"'
+                             docker.withRegistry('http://nexus:8081/repository/git-products/' , 'admin:admin123'){
+                      //app.push(0.0.1)
+                      //app.push("latest")
+                 }
                  }
                       
                  }
@@ -26,10 +30,7 @@ environment {
             steps {
               echo 'uploading to nexus registry...'
               //sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/git-products/'                   
-                 docker.withRegistry('http://nexus:8081/repository/git-products/' , 'admin:admin123'){
-                      //app.push(0.0.1)
-                      //app.push("latest")
-                 }
+                
             }
         }
        stage('run'){
