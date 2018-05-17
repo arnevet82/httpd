@@ -22,7 +22,7 @@ environment {
                  steps {
                      sh 'python --version'
                    sh 'docker run hello-world'
-                   //sh 'sudo docker build -t httpd .'
+                   sh 'sudo docker build -t httpd .'
                    
                  }
              }
