@@ -16,7 +16,7 @@ environment {
          stage('upload to nexus registry') {
             steps {
               echo 'uploading to nexus registry...'
-              sh 'curl -v -u admin:admin123 --upload-file README.md http://nexus:8081/repository/git-products/'                   
+              sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/git-products/'                   
             }
         }
        stage('run'){
