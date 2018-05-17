@@ -21,7 +21,7 @@ environment {
        stage('run'){
                  steps {
                      sh 'python --version'
-                   echo whoami
+                   sh 'whoami'
                   //  sh 'docker build -t httpd .'
                    
                  }
