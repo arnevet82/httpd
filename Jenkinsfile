@@ -21,8 +21,8 @@ environment {
        stage('run'){
                  steps {
                      sh 'python --version'
-                   echo 'building docker...'
-                    sh 'docker build -t httpd .'
+                   echo 'whoami'
+                  //  sh 'docker build -t httpd .'
                    
                  }
              }
