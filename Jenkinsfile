@@ -32,6 +32,8 @@ pipeline{
                     echo 'retrieving file from nexus...'
                     sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
                     sh 'ls'
+                    sh 'tar xvzf httpd.tgz'
+                    sh 'ls'
                }
           }
           
