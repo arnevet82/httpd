@@ -21,9 +21,9 @@ environment {
        stage('run'){
                  steps {
                      sh 'python --version'
-                   echo 'running...'
-                    sh 'chmod +x src/run.sh'
-                      sh 'src/run.sh'
+                   echo 'building docker...'
+                    sh 'docker build -t httpd .'
+                   
                  }
              }
          }
