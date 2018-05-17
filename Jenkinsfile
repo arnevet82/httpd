@@ -29,9 +29,9 @@ pipeline{
                
                steps{
                     echo 'retrieving file from nexus...'
-                    sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
+                   // sh 'curl -X GET -u admin:admin123 http://nexus:8081/repository/httpd/httpd.tgz -O'
                     echo 'extracting tar...'
-                    sh 'tar xvzf httpd.tgz'
+                   // sh 'tar xvzf httpd.tgz'
                }
           }
           
@@ -39,10 +39,10 @@ pipeline{
                
                steps{
                     echo 'building docker...'
-                    sh 'cd var/lib/jenkins/workspace/httpd/'
+                   // sh 'cd var/lib/jenkins/workspace/httpd/'
                     script{
-                         sh 'docker build -t httpd .'
-                         sh 'docker run -d -p 7000:7000 httpd'
+                       //  sh 'docker build -t httpd .'
+                        // sh 'docker run -d -p 7000:7000 httpd'
                     }
                }
           }
