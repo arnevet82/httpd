@@ -18,7 +18,6 @@ pipeline{
           }
           
           stage("Packaging"){
-            when { branch 'dev'}
             steps{
                 echo 'preparing docker'
                 sh 'docker build -t ${name} .'
