@@ -11,7 +11,7 @@ pipeline{
           
           stage('Clone') {
                steps{
-                    echo 'getting code...'
+                    echo 'getting code...'+env.BRANCH_NAME
                     checkout scm
                }
           }
