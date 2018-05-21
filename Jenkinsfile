@@ -23,6 +23,13 @@ pipeline{
                 sh 'docker tag ${name} ${registry}:${registryport}/${name}'
                }
           }
+          
+          stage("Push to registry"){
+            steps{
+                  sh 'docker push ${registry}:${registryport}/${name} '
+               }
+          }
+
 
 
           
