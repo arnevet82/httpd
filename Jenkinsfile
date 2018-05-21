@@ -19,9 +19,9 @@ pipeline{
                
                steps{
                     echo 'condensing to tar...'
-                    sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
+                    //sh 'tar -czvf ${name}.tgz /var/lib/jenkins/workspace/httpd'
                     echo 'uploading to nexus...'
-                    sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/httpd/' 
+                   // sh 'curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/httpd/httpd.tgz http://nexus:8081/repository/httpd/' 
                }
           }
           
