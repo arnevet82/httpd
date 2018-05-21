@@ -10,7 +10,6 @@ pipeline{
      stages{
           
           stage('Clone') {
-           when { branch 'dev'}
                steps{
                     echo 'getting code...'
                     checkout scm
