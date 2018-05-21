@@ -29,6 +29,15 @@ pipeline{
                   sh 'docker push ${registry}:${registryport}/${name} '
                }
           }
+          
+          stage("Run"){
+                steps{
+                   sh 'ssh root@dev docker pull ${registry}:${registryport}/${name} '
+                   sh 'ssh root@dev docker rm -f ${name} || true'
+                   sh 'ssh root@dev docker run --name ${name} -d -p 7000:7000 ${registry}:${registryport}/${name} '
+                }
+             }
+
 
 
 
